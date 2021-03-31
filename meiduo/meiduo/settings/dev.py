@@ -1,3 +1,4 @@
+#开发环境配置文件
 """
 Django settings for meiduo project.
 
@@ -76,6 +77,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+        'environment':'meiduo_mall.utils.jinja2_env.jinja2_environment'
         },
     }, 
 ]
@@ -87,10 +89,13 @@ WSGI_APPLICATION = 'meiduo.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST':'localhost',
+        'PORT':'3306',
+        'USER':'root',
+        'PASSWORD':'mzn19961023',
+        'NAME': 'meiduo'
 }
 
 
