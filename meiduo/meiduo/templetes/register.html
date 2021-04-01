@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美多商城-注册</title>
+    <link rel="stylesheet" type="text/css" href="{{ static('css/reset.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ static('css/main.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="/meiduo/meiduo/static/js/register.js"></script>
+</head>
+<body>
+   <form method="post" class='register_form' @submit="on_submit" v-clock>
+    {{ csrf_input }}
+    <ul>
+        <li>
+            <label>用户名:</label>
+            <input type='text' v-model='username' @blur='check_username' name="username" id='username'>
+            <span class="error_tip" v-show='error_name'>[[ error_name_message ]]</span>
+        </li>
+        <li>
+            <label>密码:</label>
+            <input type="password" v-model='password' @blur='check_password' name="password" id='password'>
+            <span class='error_tip' v-show='error_password'>请输入8-20位的密码</span>
+        </li>
+        <li>
+            <label>确认密码:</label>
+            <input type="password" v-model='password2' @blur='check_samepassword' name='confirm_password' id='confirm_password'>
+            <span class='error_tip' v-show='error_samepsw'>两次输入的密码不一致</span>
+        </li>
+        <li>
+            <label>手机号:</label>
+            <input type="text" v-model='phone' @blur='check_phone' name='phone' id='phone'>
+            <span class='error_tip' v-show='error_phone'>两次输入的密码不一致</span>
+        </li>
+        <li>
+            <label>图形验证码:</label>
+            <input type="text" v-model='image_code' name='image_code' id='pic_code' class="msg_input">
+            <img src="{{static('images/pic_code.jpg')}}" alt="图形验证码" class='pic_code'>
+            <span class='error_tip'>请填写图形验证码</span>
+        </li>
+        <li>
+            <label>短信验证码:</label>
+            <input type="text" v-model='sms_code' name='msg_code' id='msg_code' class="msg_input">
+            <a href="javascript:;" class="get_msg_code">获取短信验证码</a>
+            <span class='error_tip'>请填写短信验证码</span>
+        </li>
+        <li class="agreement">
+            <input type="checkbox" v-model="allow" @change="check_allow" name="allow" id="allow">
+            <label>同意使用协议</label>
+            <span class='error_tip'>请勾选用户协议</span>
+        </li>
+        <li class="reg_sub">
+            <input type="submit" value="注册">
+        </li>
+    </ul>
+   </form> 
+</body>
+</html>
