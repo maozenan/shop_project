@@ -7,10 +7,11 @@
     <title>美多商城-注册</title>
     <link rel="stylesheet" type="text/css" href="{{ static('css/reset.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ static('css/main.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script type="text/javascript" src="/meiduo/meiduo/static/js/register.js"></script>
+    <script type="text/javascript" src="{{ static('js/vue.js') }}"></script>
+    <!-- <script type="text/javascript" src="{{ static('js/axios-0.18.0.min.js') }}"></script> -->
 </head>
 <body>
+    <div id='app'>
    <form method="post" class='register_form' @submit="on_submit" v-clock>
     {{ csrf_input }}
     <ul>
@@ -54,7 +55,15 @@
         <li class="reg_sub">
             <input type="submit" value="注册">
         </li>
+        <li>
+            {% if register_errmsg %}
+            <span class="error_tip2">{{ register_errmsg }}</span>
+            {% endif %}
+        </li>
     </ul>
    </form> 
+</div>
+<script src="{{ static('js/common.js') }}"></script>
+    <script src="{{ static('js/register.js') }}"></script>
 </body>
 </html>
